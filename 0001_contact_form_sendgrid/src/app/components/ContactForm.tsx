@@ -2,8 +2,9 @@
 
 import styles from "./contactForm.module.scss";
 import { useForm } from "react-hook-form";
-import { ContactFormProps } from "@/interfaces/interfaces";
+import { ContactFormSchema, ContactFormType } from "@/interfaces/interfaces";
 import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function ContactForm() {
   const {
@@ -11,10 +12,10 @@ export default function ContactForm() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<ContactFormProps>();
+  } = useForm<ContactFormType>({ resolver: zodResolver(ContactFormSchema) });
   const [successMessage, setSuccessMessage] = useState<string>("");
 
-  const onSubmit = async (data: ContactFormProps) => {
+  const onSubmit = async (data: ContactFormType) => {
     try {
       const response = await fetch("/api/mail", {
         method: "POST",
@@ -67,6 +68,17 @@ export default function ContactForm() {
           />
           {errors.phone && (
             <p className={styles.error}>{errors.phone.message}</p>
+          )}
+        </label>
+        <label className={styles["label"]}>
+          Zipcode
+          <input
+            className={styles["input"]}
+            {...register("zipcode")}
+            placeholder="Zipcode"
+          />
+          {errors.zipcode && (
+            <p className={styles.error}>{errors.zipcode.message}</p>
           )}
         </label>
         <label className={styles["label"]}>
