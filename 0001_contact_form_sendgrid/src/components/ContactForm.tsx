@@ -36,9 +36,12 @@ export default function ContactForm() {
   };
 
   return (
-    <div>
+    <div className={styles["container"]}>
       <form className={styles["form"]} onSubmit={handleSubmit(onSubmit)}>
-        <h3 className="title">Send Us a Message</h3>
+        <h3 className={styles["title"]}>Ready to Scale Up?</h3>
+        <p className={styles["text"]}>
+          Drop us your details, and we'll call you back.
+        </p>
         <label className={styles["label"]}>
           Name
           <input
@@ -96,7 +99,7 @@ export default function ContactForm() {
           className={`${styles["button-solid"]} ${styles["submit"]}`}
           type="submit"
         >
-          Submit
+          Request a Callback
         </button>
         {successMessage && <p className={styles.success}>{successMessage}</p>}
       </form>

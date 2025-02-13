@@ -3,8 +3,9 @@
 @media only screen and (min-width: 0rem) {
   .container {
     width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
     max-width: calc(584 / 16 * 1rem);
-    margin: auto;
     display: flex;
     justify-content: center;
     align-items: stretch;
@@ -29,6 +30,8 @@
 
   .title {
     max-width: 23ch;
+    color: palette.$primary;
+    font-size: calc(24 / 16 * 1rem);
   }
 
   .text {
@@ -211,7 +214,7 @@
   .container {
     max-width: calc(1280 / 16 * 1rem);
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
   }
 
   .content {
